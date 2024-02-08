@@ -4,21 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Quadrinho Mágico" />
-    <title>QUADRO MÁGICO</title>
+    <title>QUADRINHO MÁGICO</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="container">
+    <!-- Exemplo de um quadrado responsivo. -->
+    <!-- <div class="test-square">
+      <div class="content">
+        <div class="box 1"></div>
+        <div class="box 2"></div>
+        <div class="box 3"></div>
+      </div>
+    </div> -->
+    <div class="board">
       <h1>
-        QUADRO
-        <span class="h1-cinza">MÁGICO</span>
+        <span class="gray-text">QUADRINHO</span>
+        <span class="rainbow-text">MÁGICO</span>
+        <span class="gray-text-back">QUADRINHO</span>
+        <span class="rainbow-text-back">MÁGICO</span>
       </h1>
-      <div class="grid-container"></div>
+      <div class="grid-square">
+        <div class="grid-container"></div>
+      </div>
       <div class="buttons">
-        <button id="new-board">Novo Quadro</button>
-        <button id="reset">Limpar</button>
+        <div></div>
+        <div></div>
+        <label class="switch">
+          <span class="button-text">TINTA</span>
+          <input type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="button-container">
+          <span class="button-text">TAMANHO</span>
+          <button id="new-board"></button>
+        </div>
+        <div class="button-container">
+          <span class="button-text">LIMPAR</span>
+          <button id="reset"></button>
+        </div>
+        <div></div>
       </div>
     </div>
-    <script src="./javascript.js"></script>
+
+    <script src="./script.js"></script>
   </body>
 </html>

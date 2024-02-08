@@ -1,62 +1,274 @@
 * {
-  box-sizing: border-box;
-}
+  --board-color: #00695c;
+  --board-shadow: #004136;
+  --button-color: white;
+  --background-color: #1c1833;
+  --fonts: "Courier New", monospace;
+  --grayscale: linear-gradient(45deg, white 0%, gray 55%, black 100%);
+  --rainbow: linear-gradient(
+    45deg,
+    #ff3d00,
+    #ff9100,
+    #ffc400,
+    #ffea00,
+    #c6ff00,
+    #76ff03,
+    #00e676,
+    #1de9b6,
+    #00e5ff,
+    #00b0ff,
+    #2979ff,
+    #651fff,
+    #d500f9,
+    #f50057,
+    #ff1744
+  );
 
-body {
-  background-color: #1d183f;
-  height: 100vh;
-  width: 100vw;
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-.container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+body {
+  background-color: var(--background-color);
+  width: 100vw;
+  height: 100vh;
+}
+
+.board {
+  max-width: 650px;
+  background-color: var(--board-color);
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+  margin: auto;
+  border-radius: 5%;
+  box-shadow: -1px 1px var(--board-shadow), -2px 2px var(--board-shadow),
+    -4px 4px var(--board-shadow), -3px 3px var(--board-shadow),
+    -5px 5px var(--board-shadow);
+
+  &::after {
+    content: "";
+    padding-top: 130%;
+    display: block;
+  }
+}
+
+.grid-square {
+  position: absolute;
+  width: 600px;
+  border: 1px solid black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+
+  .grid-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+  }
+
+  &::after {
+    content: "";
+    padding-top: 100%;
+    display: block;
+  }
 }
 
 h1 {
-  font-family: Helvetica, sans-serif;
-  max-height: calc(100vh * 0.1);
-  padding: 5px;
-  color: white;
-}
-
-.h1-cinza {
-  color: gray;
-}
-
-button {
-  max-height: calc(100vh * 0.05);
-  height: 40px;
-  width: 70px;
-  border: none;
-  background-color: white;
-  border-radius: 88%;
-  color: black;
-  margin: 10px;
-}
-
-.buttons {
-  display: flex;
-}
-
-.grid-container {
-  max-width: calc(100vh * 0.8);
-  max-height: calc(100vw * 0.8);
-  width: 80%;
-  height: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  font-family: var(--fonts);
+  font-size: 2.8rem;
+  position: absolute;
+  width: 650px;
+  height: 125px;
+  & .gray-text {
+    position: absolute;
+    top: 33%;
+    left: 57%;
+    transform: translate(-100%, -50%);
+    background-image: var(--grayscale);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    z-index: 1;
+  }
+  & .rainbow-text {
+    position: absolute;
+    top: 66%;
+    left: 55%;
+    transform: translate(0, -50%);
+    background-image: var(--rainbow);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    z-index: 1;
+  }
+  & .gray-text-back {
+    position: absolute;
+    top: 36%;
+    left: 56.7%;
+    transform: translate(-100%, -50%);
+    color: var(--board-shadow);
+  }
+  & .rainbow-text-back {
+    position: absolute;
+    top: 69%;
+    left: 54.7%;
+    transform: translate(0, -50%);
+    color: var(--board-shadow);
+  }
 }
 
 .grid-item {
-  aspect-ratio: 1 / 1;
-  border: 1px solid rgb(209, 209, 209);
+  border: 1px solid rgb(238, 238, 238);
   background-color: #fff;
 }
+
+.buttons {
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  height: calc((1 / 1.3) * 10%);
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.switch {
+  position: relative;
+  width: 10%;
+  height: 100%;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+.button-container {
+  position: relative;
+  width: 12.3%;
+  height: 100%;
+}
+
+button {
+  cursor: pointer;
+  height: 38.5%;
+  width: 31.3%;
+  position: absolute;
+  border: none;
+  left: 50%;
+  top: 10%;
+  box-shadow: -2px 2px rgb(59, 59, 59), -1px 1px 1px 1px rgb(59, 59, 59);
+  transform: translate(-50%, 0);
+  background-color: var(--button-color);
+  border-radius: 100%;
+  color: black;
+}
+
+.button-text {
+  font-family: var(--fonts);
+  font-size: 1.2rem;
+  color: var(--board-shadow);
+  position: absolute;
+  transform: translate(-50%, 0);
+  bottom: 5%;
+  left: 50%;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  height: 52.31%;
+  top: 30%;
+  transform: translate(0, -50%);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--grayscale);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
+
+  &::before {
+    position: absolute;
+    content: "";
+    height: 76.47%;
+    width: 40%;
+    left: 6.15%;
+    bottom: 11.76%;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 34px;
+  }
+}
+
+input:checked + .slider {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: var(--rainbow);
+
+  &::before {
+    -webkit-transform: translateX(120.15%);
+    -ms-transform: translateX(120.15%);
+    transform: translateX(120.15%);
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .board {
+    width: 350px;
+  }
+  .grid-square {
+    width: 320px;
+  }
+  h1 {
+    width: 350px;
+    height: 75px;
+    font-size: 1.4rem;
+  }
+  .button-text {
+    font-size: 0.8rem;
+  }
+}
+
+/* Configuration of a Square element with flex inside it.*/
+/*
+.test-square {
+  max-width: 500px;
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+  background-color: red;
+  margin: auto;
+  text-align: center;
+
+  .content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+}
+
+.box {
+  height: 45%;
+  width: 45%;
+  background-color: white;
+}*/
