@@ -50,12 +50,16 @@ function createBoard(boardSize) {
   });
 }
 
+function removeItems() {
+  while (gridContainer.firstChild) {
+    gridContainer.removeChild(gridContainer.firstChild);
+  }
+}
+
 //Reset all items color to white.
 function resetBoard() {
-  const gridItens = document.querySelectorAll(".grid-item");
-  gridItens.forEach((gridItem) => {
-    gridItem.style.backgroundColor = "white";
-  });
+  removeItems();
+  createBoard(boardSize);
 }
 
 //Creates a new board with the user input number of rows.
@@ -66,14 +70,8 @@ function newBoard() {
       answer = prompt("Por favor, digite um número de 1 a 100.");
     }
     boardSize = answer;
-    while (gridContainer.firstChild) {
-      gridContainer.removeChild(gridContainer.firstChild);
-    }
+    removeItems();
     createBoard(boardSize);
-    const gridItens = document.querySelectorAll(".grid-item");
-    gridItens.forEach((gridItem) => {
-      gridItem.style.backgroundColor = "white";
-    });
   }
 }
 
