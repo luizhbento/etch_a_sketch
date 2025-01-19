@@ -1,1 +1,3 @@
-# etch_a_sketch
+Quadrinho Mágico. 
+
+Tecnologias: HTML, CSS e Javascript.
